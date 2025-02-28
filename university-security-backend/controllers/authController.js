@@ -2,12 +2,7 @@ const Admin = require("../models/Admin");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-/**
- * @desc Register a new admin
- * @route POST /api/admin/register
- * @access Public
- */
-
+// Register admin uses post method and publicly accessible
 exports.registerAdmin = async(req,res) => {
     const {name, email, password} = req.body;
 
@@ -27,24 +22,20 @@ exports.registerAdmin = async(req,res) => {
     }
 };
 
-/**
- * @desc Login admin
- * @route POST /api/admin/login
- * @access Public
- */
+// Admin login uses post method and publicy accessible
  exports.loginAdmin = async (req, res) => {
     const { email, password } = req.body;
   
     try {
-      // Check if admin exists in the database
+      //Check if admin exists in the database
       const admin = await Admin.findOne({ email });
       if (!admin) return res.status(400).json({ message: "Invalid email or password EM" });
   
-      // Compare the provided password with the stored hashed password
+      //Compare the provided password with the stored hashed password
       const isMatch = await bcrypt.compare(password, admin.password);
       if (!isMatch) return res.status(400).json({ message: "Invalid email or password PW" });
   
-      // Generate JWT token for authentication
+      //Generate JWT token for authentication
       const token = jwt.sign({ id: admin._id, email: admin.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
   
       res.json({ message: "Login successful", token });
