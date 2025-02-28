@@ -1,6 +1,6 @@
 # University Security API Documentation
 ## Base URL
-http://localhost:5000
+http://localhost:5001
 
 ---
 ## 1. Register Admin
