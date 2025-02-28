@@ -16,9 +16,6 @@ exports.registerAdmin = async(req,res) => {
         const existingAdmin = await Admin.findOne({ email });
         if (existingAdmin) return res.status(400).json({ message: "Admin already exists" });
 
-        //Hash password before saving to database
-       // const hashedPassword = await bcrypt.hash(password, 10);
-
         //Create new admin in  database
         const newAdmin = await Admin.create({ name, email, password});
 
@@ -42,19 +39,6 @@ exports.registerAdmin = async(req,res) => {
       // Check if admin exists in the database
       const admin = await Admin.findOne({ email });
       if (!admin) return res.status(400).json({ message: "Invalid email or password EM" });
-
-      console.log("🔍 Entered Password:", password);
-      console.log("🔍 Stored Hashed Password:", admin.password);
-      bcrypt.hash("SecurePassword", 10).then(hash => {
-        console.log("New Hashed Password:", hash);
-      });
-      bcrypt.hash("$2b$10$qqJs.5veSIm.cIiZpo9t5uTNDYcQSv7GAufLHGybp/ghzQ.8sFybS", 10).then(hash => {
-        console.log("New Hashed Password:", hash);
-      });
-      
-
-      bcrypt.compare(password, admin.password).then(result => console.log("Password match:", result));
-  
   
       // Compare the provided password with the stored hashed password
       const isMatch = await bcrypt.compare(password, admin.password);
