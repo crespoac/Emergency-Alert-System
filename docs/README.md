@@ -32,4 +32,32 @@ git pull origin backend-setup-0.0
 npm install
 ``` 
 ## Set up env file
-I ignored the env file for obvious reasons. These has sensitive information on it that should not be accessible. In our discord I will have it in general. Take this file and place it in the university-backend-file
+I ignored the env file for obvious reasons. These has sensitive information on it that should not be accessible. In our discord I will have it in general. Take this file and place it in the university-secuirty-backend directory
+
+## To start server open terminal in the directory of university-security-backend and run this command
+```bash
+npx nodemon server.js
+```
+## If everything goes as planned you will see
+```bash
+🚀 Server running at http://localhost:5001/api
+✅ MongoDB Connected
+```
+
+### There is API documentation in the api.md, you can take a look at to see the structure of our API and test what is available already
+
+## Now to contribute you will do the following
+```bash
+git pull origin backend-setup-0.0
+```
+## Make new branch 
+```bash
+git checkout -b feature-branch-name
+```
+
+## After changing commit and push
+```bash
+git add .
+git commit -m "Added feature XYZ"
+git push origin feature-branch-name
+```
