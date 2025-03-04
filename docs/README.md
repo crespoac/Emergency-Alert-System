@@ -29,6 +29,7 @@ git pull origin backend-setup-0.0
 ```
 ## After cloning install all dependencies
 ```bash
+cd university-security-alert
 npm install
 ``` 
 ## Set up env file
