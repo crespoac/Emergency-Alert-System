@@ -18,7 +18,7 @@ Before setting up the project, make sure you have the following installed:
 ## Clone the Repository
 Run the following command to clone the repository:
 ```bash
-git clone https://github.com/your-username/Emergency-Alert-System.git
+git clone https://github.com/crespoac/Emergency-Alert-System.git
 cd Emergency-Alert-System
 ```
 

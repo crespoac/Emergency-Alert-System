@@ -1,7 +1,7 @@
 # Alex
 # University Security API Documentation
 ## Base URL
-http://localhost:5000
+http://localhost:5001
 
 ---
 ## 1. Register User, Admin, or Security Personnel
