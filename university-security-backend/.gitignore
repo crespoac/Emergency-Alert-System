@@ -6,3 +6,9 @@ node_modules/
 
 # Logs
 *.log
+
+# System files
+.DS_Store
+
+# Ignore all hidden files (macOS/Linux)
+.*/  

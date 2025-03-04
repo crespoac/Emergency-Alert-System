@@ -1,3 +1,4 @@
+//Alex and Oscar
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -25,8 +26,16 @@ const userSchema = new mongoose.Schema(
             enum: ["user"],
             default: "user",
         },
+        isVerified: {
+            type: Boolean,
+            default: false, // User is not verified by default
+        },
+        verificationToken: {
+            type: String, // Stores the unique token sent to the user
+            default: null,
+        },
     },
-    {timestamp: true}
+    {timestamps: true}
 );
 
 //Hash the password before saving

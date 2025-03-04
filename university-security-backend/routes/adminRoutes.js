@@ -1,18 +1,37 @@
+//Alex
 const express = require("express");
-const { registerAdmin, loginAdmin } = require("../controllers/authController");
 const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-//Route for register
- router.post("/register", registerAdmin);
-
- //Route for login
- router.post("/login", loginAdmin);
- 
-// Protect the `/admin/dashboard` route with `authMiddleware`
+//Protect the `/admin/dashboard` route with `authMiddleware`
 router.get("/dashboard", authMiddleware, (req, res) => {
-  res.json({ message: `Welcome, Admin ${req.admin.id}!` });
+  if (req.user.role !== "admin"){
+    return res.status(403).json(
+      {message: 
+      "Admins only, access forbidden."});
+  }
+  res.json({ message: 
+    `Welcome, Admin ${req.user.id}!` 
+  });
+});
+
+
+//Admins can view all users
+router.get("/users", authMiddleware, async (req, res) => {
+  if (req.user.role !== "admin") {
+    return res.status(403).json({message: 
+    "Admins only, access forbidden"});
+  }
+  try {
+    const users = await User.find({}, "-password"); //This will find users info excluding password
+    res.json(users);
+  }
+   catch (error) {
+    res.status(500).json({message:
+      "Server error", error: error.message
+    });
+  }
 });
 
 module.exports = router;

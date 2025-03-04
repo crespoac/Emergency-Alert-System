@@ -1,3 +1,4 @@
+//Alex and Oscar
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
@@ -24,7 +25,16 @@ const AdminSchema = new mongoose.Schema({
         enum: ["admin"],
         default: "admin",
     },
-}, {timestamps: true});
+    isVerified: {
+        type: Boolean,
+        default: false, // User is not verified by default
+    },
+    verificationToken: {
+        type: String, // Stores the unique token sent to the user
+        default: null,
+    },
+}, 
+{timestamps: true});
 
 //Hash password before saving to DB using bycrypt
 AdminSchema.pre("save",async function (next) {

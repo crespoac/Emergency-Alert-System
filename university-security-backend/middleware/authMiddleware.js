@@ -1,3 +1,4 @@
+//Alex
 const jwt = require("jsonwebtoken");  
 
 const authMiddleware = (req, res, next) => {  
@@ -9,7 +10,7 @@ const authMiddleware = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token.replace("Bearer ", ""), process.env.JWT_SECRET);  
-    req.admin = decoded;  
+    req.user = decoded;  
     next();  
   } 
   catch (error) {
