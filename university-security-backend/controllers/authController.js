@@ -29,11 +29,11 @@ exports.registerAdmin = async(req,res) => {
     try {
       //Check if admin exists in the database
       const admin = await Admin.findOne({ email });
-      if (!admin) return res.status(400).json({ message: "Invalid email or password EM" });
+      if (!admin) return res.status(400).json({ message: "Invalid email or password" });
   
       //Compare the provided password with the stored hashed password
       const isMatch = await bcrypt.compare(password, admin.password);
-      if (!isMatch) return res.status(400).json({ message: "Invalid email or password PW" });
+      if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
   
       //Generate JWT token for authentication
       const token = jwt.sign({ id: admin._id, email: admin.email }, process.env.JWT_SECRET, { expiresIn: "1h" });
