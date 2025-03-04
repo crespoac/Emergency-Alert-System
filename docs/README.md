@@ -27,7 +27,7 @@ cd Emergency-Alert-System
 git checkout backend-setup-0.0
 git pull origin backend-setup-0.0
 ```
-## After cloning install all dependencies
+## After cloning install all dependencies, make sure to change directory to university-security-backend
 ```bash
 npm install
 ``` 
